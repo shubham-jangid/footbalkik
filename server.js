@@ -10,7 +10,7 @@ const validator = require("express-validator");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
-const flash = require("flash");
+// const flash = require("flash");`
 const passport = require("passport");
 
 var app = express();
@@ -38,7 +38,7 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
-app.use(flash());
+// app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -46,33 +46,6 @@ server.listen(3000, function() {
   console.log("listening to port 3000");
 });
 
-module.exports = { users };
+module.exports = { users, app };
 
 require("./controllers/users");
-
-// const container = require("./container");
-
-// container.resolve(function(users) {
-//   const app = SetupExpress();
-
-//   function SetupExpress() {
-//     const app = express();
-//     const server = https.createServer(app);
-//     server.listen(3000, function() {
-//       console.log("listening to port 3000");
-//     });
-//     const router = require("express-promise-router");
-//     users.SetRouting(router);
-
-//     app.use(router);
-//   }
-
-//   function ConfigureExpress(app) {
-//     app.use(express.static("public"));
-//     app.set("view engine", "ejs");
-//     app.use(bodyParser.json());
-//     app.use(bodyParser.urlencode({ extended: true }));
-//   }
-// });
-
-// module.exports = { users };

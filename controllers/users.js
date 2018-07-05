@@ -1,13 +1,13 @@
 const { users } = require("./../server");
 const passport = require("passport");
 
-const Signup = (req, res) => {
+const getSignup = (req, res) => {
   return res.render("signup", {
     signup: "signup page"
   });
 };
 
-const Login = (req, res) => {
+const index = (req, res) => {
   return res.render("login", {
     signup: "login page"
   });
@@ -22,8 +22,8 @@ const postSignup = passport.authenticate("local-signup", {
   failureFlash: true
 });
 
-users.get("/", Login);
+users.get("/", index);
 
-users.get("/signup", Signup);
+users.get("/signup", getSignup);
 users.post("/signup", postSignup);
 users.get("/home", homePage);
